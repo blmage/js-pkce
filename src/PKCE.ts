@@ -71,7 +71,13 @@ export default class PKCE {
           Accept: 'application/json',
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
         },
-      }).then((response) => response.json());
+      }).then((response) => {
+        if (!response.ok) {
+          throw response;
+        }
+
+        return response.json();
+      });
     });
   }
 
@@ -100,7 +106,13 @@ export default class PKCE {
         Accept: 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
       },
-    }).then((response) => response.json());
+    }).then((response) => {
+      if (!response.ok) {
+        throw response;
+      }
+
+      return response.json();
+    });
   }
 
   /**
